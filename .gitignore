@@ -1,0 +1,13 @@
+# Python build artifacts
+__pycache__/
+*.pyc
+*.pyo
+
+# Packaging metadata
+*.egg-info/
+
+# Virtual environments
+venv/
+.env/
+
+github_traffic/config.ini
