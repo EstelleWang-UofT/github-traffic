@@ -69,10 +69,17 @@ def save_month(date, dataname, dirname, data):
         json.dump(this_month, open(fname, "w"))
 
 
-def query(url):
+def query(path):
     token = config["github"]["token"]
-    url = os.path.join("https://api.github.com/", url)
-    r = requests.get(url, params={"access_token": token})
+    url = "https://api.github.com/" + path
+
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+
+    r = requests.get(url, headers=headers)
     r.raise_for_status()
     return r.json()
 
